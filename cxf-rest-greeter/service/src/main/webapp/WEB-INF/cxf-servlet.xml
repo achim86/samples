@@ -10,9 +10,9 @@
     <import resource="classpath:META-INF/cxf/cxf.xml"/>
     <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
 
-    <bean id="greeterServiceBean" class="de.afinke.services.Greeter"/>
+    <bean id="greeterServiceBean" class="de.afinke.greeter.GreeterServiceImpl"/>
 
-    <jaxrs:server address="/">
+    <jaxrs:server id="greeterService" address="/">
         <jaxrs:serviceBeans>
             <ref bean="greeterServiceBean"/>
         </jaxrs:serviceBeans>
