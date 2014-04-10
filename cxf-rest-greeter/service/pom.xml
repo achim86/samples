@@ -32,7 +32,7 @@
     </dependencies>
 
     <build>
-        <finalName>greeter</finalName>
+        <finalName>${artifactId}</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>

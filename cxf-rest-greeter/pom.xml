@@ -88,9 +88,13 @@
                     <extensions>true</extensions>
                 </plugin>
                 <plugin>
+                    <!--
+                    SNAPSHOT version cause of a bug in 2.2 release when creating standalone tomcat
+                    (see: https://issues.apache.org/jira/browse/MTOMCAT-211)
+                    -->
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
-                    <version>2.2</version>
+                    <version>2.3-SNAPSHOT</version>
                     <configuration>
                         <path>/</path>
                         <port>${tomcat.http.port}</port>
@@ -113,6 +117,18 @@
                             <goals>
                                 <goal>shutdown</goal>
                             </goals>
+                        </execution>
+                        <execution>
+                            <id>standalone-tomcat</id>
+                            <goals>
+                                <goal>exec-war-only</goal>
+                            </goals>
+                            <phase>package</phase>
+                            <configuration>
+                                <enableNaming>false</enableNaming>
+                                <finalName>standalone-tomcat.jar</finalName>
+                                <path>/</path>
+                            </configuration>
                         </execution>
                     </executions>
                 </plugin>
@@ -137,5 +153,32 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <repositories>
+        <repository>
+            <id>apache.snapshots</id>
+            <url>https://repository.apache.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>apache.snapshots</id>
+            <name>Apache Snapshots</name>
+            <url>https://repository.apache.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>
