@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+
+    <jaxrs:client id="greeterService"
+                  address="http://localhost:8080/services"
+                  serviceClass="de.afinke.greeter.GreeterService"
+                  inheritHeaders="true">
+    </jaxrs:client>
+
+    <bean id="greeterController" scope="session" class="de.afinke.greeter.app.GreeterController">
+        <property name="greeterService" ref="greeterService"/>
+    </bean>
+
+    <bean id="greeterView" scope="session" class="de.afinke.greeter.app.GreeterView">
+        <property name="greeterController" ref="greeterController"/>
+    </bean>
+
+</beans>
