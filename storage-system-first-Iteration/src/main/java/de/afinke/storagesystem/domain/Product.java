@@ -1,29 +1,27 @@
 package de.afinke.storagesystem.domain;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "product")
 public class Product {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
     private Long id;
-    @Column(name = "name")
     private String name;
-    @Column(name = "price")
     private double price;
 
-    public Product() {
-
-    }
+    public Product() {}
 
     public Product(String name, double price) {
         this.name = name;
         this.price = price;
     }
 
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     public Long getId() {
         return id;
     }
@@ -32,6 +30,7 @@ public class Product {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -40,6 +39,7 @@ public class Product {
         this.name = name;
     }
 
+    @Column(name = "price")
     public double getPrice() {
         return price;
     }
@@ -60,25 +60,23 @@ public class Product {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Product)) return false;
 
         Product product = (Product) o;
 
-        if (Double.compare(product.price, price) != 0) return false;
-        if (id != null ? !id.equals(product.id) : product.id != null) return false;
-        if (name != null ? !name.equals(product.name) : product.name != null) return false;
-
-        return true;
+        EqualsBuilder equalsBuilder = new EqualsBuilder();
+        equalsBuilder.append(id, product.id);
+        equalsBuilder.append(name, product.getName());
+        equalsBuilder.append(price, product.getPrice());
+        return equalsBuilder.isEquals();
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        temp = Double.doubleToLongBits(price);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
+        HashCodeBuilder hashCodeBuilder = new HashCodeBuilder();
+        hashCodeBuilder.append(id);
+        hashCodeBuilder.append(name);
+        hashCodeBuilder.append(price);
+        return hashCodeBuilder.toHashCode();
     }
 }

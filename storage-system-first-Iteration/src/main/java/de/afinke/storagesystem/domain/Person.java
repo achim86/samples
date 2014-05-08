@@ -1,25 +1,25 @@
 package de.afinke.storagesystem.domain;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "person")
 public class Person {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
     private Long id;
-    @Column(name = "name")
     private String name;
 
-    public Person() {
-    }
+    public Person() {}
 
     public Person(String name) {
         this.name = name;
     }
 
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     public Long getId() {
         return id;
     }
@@ -28,6 +28,7 @@ public class Person {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -47,20 +48,21 @@ public class Person {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Person)) return false;
 
         Person person = (Person) o;
 
-        if (id != null ? !id.equals(person.id) : person.id != null) return false;
-        if (name != null ? !name.equals(person.name) : person.name != null) return false;
-
-        return true;
+        EqualsBuilder equalsBuilder = new EqualsBuilder();
+        equalsBuilder.append(id, person.id);
+        equalsBuilder.append(name, person.getName());
+        return equalsBuilder.isEquals();
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
+        HashCodeBuilder hashCodeBuilder = new HashCodeBuilder();
+        hashCodeBuilder.append(id);
+        hashCodeBuilder.append(name);
+        return hashCodeBuilder.toHashCode();
     }
 }

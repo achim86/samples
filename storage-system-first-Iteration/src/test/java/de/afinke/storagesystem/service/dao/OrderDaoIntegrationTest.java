@@ -1,5 +1,6 @@
 package de.afinke.storagesystem.service.dao;
 
+import de.afinke.storagesystem.IntegrationTest;
 import de.afinke.storagesystem.domain.Order;
 import de.afinke.storagesystem.domain.Person;
 import de.afinke.storagesystem.domain.Product;
@@ -12,7 +13,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class OrderDaoTest extends DaoTest {
+public class OrderDaoIntegrationTest extends IntegrationTest {
 
     @Autowired
     private ProductDao productDao;

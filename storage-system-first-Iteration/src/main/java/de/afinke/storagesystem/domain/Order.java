@@ -9,26 +9,20 @@ import java.util.List;
 @Entity
 @Table(name = "`order`")
 public class Order {
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
     private Long id;
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "order_product", joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id", unique = true)})
-    private List<Product> products;
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
     private Person customer;
+    private List<Product> products;
 
-    public Order() {
-    }
+    public Order() {}
 
     public Order(List<Product> products, Person customer) {
         this.products = products;
         this.customer = customer;
     }
 
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     public Long getId() {
         return id;
     }
@@ -37,6 +31,8 @@ public class Order {
         this.id = id;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
     public Person getCustomer() {
         return customer;
     }
@@ -45,6 +41,9 @@ public class Order {
         this.customer = customer;
     }
 
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "order_product", joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id", unique = true)})
     public List<Product> getProducts() {
         return products;
     }

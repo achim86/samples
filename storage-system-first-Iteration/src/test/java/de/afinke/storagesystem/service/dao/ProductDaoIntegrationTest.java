@@ -1,5 +1,6 @@
 package de.afinke.storagesystem.service.dao;
 
+import de.afinke.storagesystem.IntegrationTest;
 import de.afinke.storagesystem.domain.Product;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class ProductDaoTest extends DaoTest {
+public class ProductDaoIntegrationTest extends IntegrationTest {
 
     @Autowired
     private ProductDao productDao;

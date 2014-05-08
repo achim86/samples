@@ -1,4 +1,4 @@
-package de.afinke.storagesystem.service.dao;
+package de.afinke.storagesystem;
 
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +8,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.jdbc.JdbcTestUtils;
 
-@ContextConfiguration(locations = {"/persistence-beans.xml"})
-public abstract class DaoTest extends AbstractJUnit4SpringContextTests {
+@ContextConfiguration("file:src/main/webapp/WEB-INF/applicationContext.xml")
+public abstract class IntegrationTest extends AbstractJUnit4SpringContextTests {
 
-    private final String deleteScript = "src/main/resources/sql/cleanup.sql";
+    private final String deleteScript = "src/test/resources/sql/cleanup.sql";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
