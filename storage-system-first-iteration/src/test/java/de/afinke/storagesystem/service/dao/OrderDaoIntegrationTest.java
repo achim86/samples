@@ -1,6 +1,9 @@
 package de.afinke.storagesystem.service.dao;
 
 import de.afinke.storagesystem.IntegrationTest;
+import de.afinke.storagesystem.dao.OrderDao;
+import de.afinke.storagesystem.dao.PersonDao;
+import de.afinke.storagesystem.dao.ProductDao;
 import de.afinke.storagesystem.domain.Order;
 import de.afinke.storagesystem.domain.Person;
 import de.afinke.storagesystem.domain.Product;

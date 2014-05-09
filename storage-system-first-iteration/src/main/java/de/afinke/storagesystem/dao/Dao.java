@@ -1,4 +1,4 @@
-package de.afinke.storagesystem.service.dao;
+package de.afinke.storagesystem.dao;
 
 import java.util.List;
 

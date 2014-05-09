@@ -16,7 +16,7 @@ public class PersonServiceIntegrationTest extends IntegrationTest {
     public void testCreate() {
         Person person = createTestPerson();
 
-        assertEquals(person, personService.list().get(0));
+        assertEquals(person, personService.listPersons().get(0));
     }
 
     @Test
@@ -43,13 +43,13 @@ public class PersonServiceIntegrationTest extends IntegrationTest {
         Person person = createTestPerson();
 
         personService.deletePerson(person);
-        assertTrue(0 == personService.list().size());
+        assertTrue(0 == personService.listPersons().size());
     }
 
     private Person createTestPerson() {
         Person person = new Person("test");
         personService.createPerson(person);
-        assertTrue("Creation of test person failed", 1 == personService.list().size());
+        assertTrue("Creation of test person failed", 1 == personService.listPersons().size());
         return person;
     }
 }

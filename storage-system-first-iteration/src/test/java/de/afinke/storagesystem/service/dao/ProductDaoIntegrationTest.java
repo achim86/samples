@@ -1,6 +1,7 @@
 package de.afinke.storagesystem.service.dao;
 
 import de.afinke.storagesystem.IntegrationTest;
+import de.afinke.storagesystem.dao.ProductDao;
 import de.afinke.storagesystem.domain.Product;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
