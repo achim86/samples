@@ -1,8 +1,8 @@
 package de.afinke.storagesystem.service.impl;
 
+import de.afinke.storagesystem.dao.PersonDao;
 import de.afinke.storagesystem.domain.Person;
 import de.afinke.storagesystem.service.PersonService;
-import de.afinke.storagesystem.dao.PersonDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

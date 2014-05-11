@@ -1,8 +1,8 @@
 package de.afinke.storagesystem.dao.impl;
 
+import de.afinke.storagesystem.dao.HibernateDao;
 import de.afinke.storagesystem.dao.ProductDao;
 import de.afinke.storagesystem.domain.Product;
-import de.afinke.storagesystem.dao.HibernateDao;
 import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
 

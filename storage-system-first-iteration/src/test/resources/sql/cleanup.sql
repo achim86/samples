@@ -1,4 +1,4 @@
-delete from order_product;
-delete from "order";
-delete from person;
-delete from product;
+DELETE FROM order_product;
+DELETE FROM "order";
+DELETE FROM person;
+DELETE FROM product;

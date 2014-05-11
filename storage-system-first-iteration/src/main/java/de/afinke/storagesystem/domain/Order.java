@@ -13,7 +13,8 @@ public class Order {
     private Person customer;
     private List<Product> products;
 
-    public Order() {}
+    public Order() {
+    }
 
     public Order(List<Product> products, Person customer) {
         this.products = products;

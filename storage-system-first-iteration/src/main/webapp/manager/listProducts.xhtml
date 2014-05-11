@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Product List</title>
+</h:head>
+
+<h:body>
+    <h:form id="form">
+        <p:tabMenu activeIndex="4">
+            <p:menuitem value="Overview" url="/manager.jsf"/>
+            <p:menuitem value="Create Customer" url="/manager/createCustomer.jsf"/>
+            <p:menuitem value="List Customers" url="/manager/listCustomers.jsf"/>
+            <p:menuitem value="Create Product" url="/manager/createProduct.jsf"/>
+            <p:menuitem value="List Products" url="/manager/listProducts.jsf"/>
+        </p:tabMenu>
+
+        <p:dataTable id="productTable" value="#{managerBean.products}" var="product">
+            <p:column headerText="ID">
+                <h:outputText value="#{product.id}"/>
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{product.name}"/>
+            </p:column>
+            <p:column headerText="Price">
+                <h:outputText value="#{product.price}"/>
+            </p:column>
+            <p:column style="width:4%">
+                <p:commandButton id="editButton" icon="ui-icon-search" title="Edit" process="@this"
+                                 oncomplete="PF('productDialog').show()" update=":form:display">
+                    <f:setPropertyActionListener value="#{product}" target="#{managerBean.selectedProduct}"/>
+                </p:commandButton>
+            </p:column>
+            <p:column style="width:4%">
+                <p:commandButton id="deleteButton" actionListener="#{managerBean.deleteProduct(product)}"
+                                 update="productTable" icon="ui-icon-close" title="Delete" process="@this"/>
+            </p:column>
+        </p:dataTable>
+
+        <p:dialog header="Product Details" widgetVar="productDialog" resizable="false" id="productDlg" modal="true">
+            <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
+                <h:outputText value="ID:"/>
+                <h:outputText value="#{managerBean.selectedProduct.id}" style="font-weight:bold"/>
+                <h:outputText value="Name:"/>
+                <h:inputText value="#{managerBean.selectedProduct.name}" style="font-weight:bold"/>
+                <h:outputText value="Price:"/>
+                <h:inputText value="#{managerBean.selectedProduct.price}" style="font-weight:bold"/>
+                <f:facet name="footer">
+                    <p:commandButton id="updateButton" value="Update" update=":form:productTable"
+                                     actionListener="#{managerBean.updateProduct()}"
+                                     oncomplete="PF('productDialog').hide()"/>
+                    <p:commandButton id="canelButton" value="Cancel" onclick="PF('productDialog').hide()"/>
+                </f:facet>
+            </h:panelGrid>
+        </p:dialog>
+
+    </h:form>
+</h:body>
+
+</html>

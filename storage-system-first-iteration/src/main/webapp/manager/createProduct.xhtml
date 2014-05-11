@@ -6,12 +6,12 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>Create Customer</title>
+    <title>Create Product</title>
 </h:head>
 
 <h:body>
     <h:form>
-        <p:tabMenu activeIndex="1">
+        <p:tabMenu activeIndex="3">
             <p:menuitem value="Overview" url="/manager.jsf"/>
             <p:menuitem value="Create Customer" url="/manager/createCustomer.jsf"/>
             <p:menuitem value="List Customers" url="/manager/listCustomers.jsf"/>
@@ -19,15 +19,17 @@
             <p:menuitem value="List Products" url="/manager/listProducts.jsf"/>
         </p:tabMenu>
 
-        <p:panel id="customerPanel" header="New Customer" style="margin-bottom:10px;">
+        <p:panel id="productPanel" header="New Product" style="margin-bottom:10px;">
             <h:panelGrid columns="2">
                 <h:outputLabel for="name" value="Name: "/>
-                <p:inputText id="name" value="#{managerBean.customer.name}"/>
+                <p:inputText id="name" value="#{managerBean.product.name}"/>
+                <h:outputLabel for="price" value="Price: "/>
+                <p:inputText id="price" value="#{managerBean.product.price}"/>
             </h:panelGrid>
         </p:panel>
 
-        <p:commandButton value="Create" update="customerPanel"
-                         actionListener="#{managerBean.createCustomer()}" styleClass="ui-priority-primary"/>
+        <p:commandButton value="Create" update="productPanel"
+                         actionListener="#{managerBean.createProduct()}" styleClass="ui-priority-primary"/>
     </h:form>
 </h:body>
 
