@@ -1,4 +1,4 @@
-package de.afinke.storagesystem.service.dao;
+package de.afinke.storagesystem.dao;
 
 import de.afinke.storagesystem.IntegrationTest;
 import de.afinke.storagesystem.dao.OrderDao;
@@ -61,7 +61,7 @@ public class OrderDaoIntegrationTest extends IntegrationTest {
     }
 
     private Order createTestOrder() {
-        Product product = new Product("test", 10.0);
+        Product product = new Product("test", 10.0, 5);
         productDao.create(product);
         assertTrue("Creation of test product failed", 1 == productDao.list().size());
         List<Product> products = new ArrayList<Product>();

@@ -3,13 +3,35 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-        >
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
     <title>Customer</title>
 </h:head>
 
 <h:body>
+    <h:form id="form">
+        <p:tabMenu id="menu" activeIndex="0">
+            <p:menuitem value="Overview" url="/index.jsf"/>
+            <p:menuitem value="Create Order" url="/customer/createOrder.jsf"
+                        rendered="#{customerBean.customerSelected}"/>
+            <p:menuitem value="List Orders" url="/customer/listOrders.jsf"
+                        rendered="#{customerBean.customerSelected}"/>
+        </p:tabMenu>
+
+        <p:message for="customers"/>
+        <p:panel header="Select Customer" style="margin-bottom:10px;">
+            <p:selectOneMenu id="customers" value="#{customerBean.selectedCustomerId}" converter="#{personConverter}">
+                <f:selectItem itemLabel="Select a customer..." itemValue=""/>
+                <f:selectItems value="#{customerBean.customers}" var="customer" itemLabel="#{customer.name}"
+                               itemValue="#{customer.id}"/>
+            </p:selectOneMenu>
+        </p:panel>
+
+        <p:commandButton value="Submit" update="form" actionListener="#{customerBean.lookupSelectedCustomer()}"/>
+
+    </h:form>
 </h:body>
 
 </html>

@@ -1,4 +1,4 @@
-package de.afinke.storagesystem.service.dao;
+package de.afinke.storagesystem.dao;
 
 import de.afinke.storagesystem.IntegrationTest;
 import de.afinke.storagesystem.dao.PersonDao;
