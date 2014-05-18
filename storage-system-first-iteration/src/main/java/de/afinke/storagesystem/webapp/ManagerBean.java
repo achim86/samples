@@ -1,4 +1,4 @@
-package de.afinke.storagesystem.webapp.beans;
+package de.afinke.storagesystem.webapp;
 
 import de.afinke.storagesystem.domain.Person;
 import de.afinke.storagesystem.domain.Product;
