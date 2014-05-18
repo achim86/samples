@@ -33,6 +33,7 @@
                                          update="productTable" icon="ui-icon-plus" title="Add"/>
                     </p:column>
                     <f:facet name="footer">
+                        <p:outputLabel value="Shopping Cart"/>
                         <p:dataTable id="shoppingCartTable" value="#{customerBean.shoppingCart}" var="product">
                             <p:column headerText="Name">
                                 <h:outputText value="#{product.name}"/>
@@ -43,12 +44,14 @@
                             <f:facet name="footer">
                                 <h:outputLabel value="Total Amount: "/>
                                 <h:outputText value="#{customerBean.calculatePrice()}"/>
+                                <p:commandButton value="Place Order" actionListener="#{customerBean.placeOrder()}"
+                                                 update="shoppingCartTable"/>
+                                <p:commandButton value="Reset" actionListener="#{customerBean.resetShoppingCart()}"
+                                                 update="shoppingCartTable"/>
                             </f:facet>
                         </p:dataTable>
                     </f:facet>
                 </p:dataTable>
-            </p:row>
-            <p:row>
             </p:row>
         </p:panelGrid>
 

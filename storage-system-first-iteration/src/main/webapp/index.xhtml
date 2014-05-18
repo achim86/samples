@@ -10,11 +10,13 @@
 </h:head>
 
 <h:body>
-    <p:button outcome="manager" value="Manager"/>
+    <h:form>
+        <p:button outcome="manager" value="Manager"/>
 
-    <p:button outcome="customer" value="Customer"/>
+        <p:button outcome="customer" value="Customer"/>
 
-    <p:button onclick="#{indexBean.createTestData()}" value="Create Test Data"/>
+        <p:commandButton actionListener="#{indexBean.createTestData()}" value="Create Test Data"/>
+    </h:form>
 </h:body>
 
 </html>

@@ -11,15 +11,13 @@ public class Product {
     private Long id;
     private String name;
     private double price;
-    private int quantity;
 
     public Product() {
     }
 
-    public Product(String name, double price, int quantity) {
+    public Product(String name, double price) {
         this.name = name;
         this.price = price;
-        this.quantity = quantity;
     }
 
     @Id
@@ -51,22 +49,12 @@ public class Product {
         this.price = price;
     }
 
-    @Column(name = "quantity")
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", quantity=" + quantity +
                 '}';
     }
 
@@ -81,7 +69,6 @@ public class Product {
         equalsBuilder.append(id, product.id);
         equalsBuilder.append(name, product.getName());
         equalsBuilder.append(price, product.getPrice());
-        equalsBuilder.append(quantity, product.getQuantity());
         return equalsBuilder.isEquals();
     }
 
@@ -91,7 +78,6 @@ public class Product {
         hashCodeBuilder.append(id);
         hashCodeBuilder.append(name);
         hashCodeBuilder.append(price);
-        hashCodeBuilder.append(quantity);
         return hashCodeBuilder.toHashCode();
     }
 }

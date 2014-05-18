@@ -1,5 +1,6 @@
-package de.afinke.storagesystem.dao;
+package de.afinke.storagesystem.dao.impl;
 
+import de.afinke.storagesystem.dao.Dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

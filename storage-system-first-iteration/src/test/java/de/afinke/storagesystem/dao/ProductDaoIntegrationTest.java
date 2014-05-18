@@ -1,7 +1,6 @@
 package de.afinke.storagesystem.dao;
 
 import de.afinke.storagesystem.IntegrationTest;
-import de.afinke.storagesystem.dao.ProductDao;
 import de.afinke.storagesystem.domain.Product;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +48,7 @@ public class ProductDaoIntegrationTest extends IntegrationTest {
     }
 
     private Product createTestProduct() {
-        Product product = new Product("test", 10.0, 5);
+        Product product = new Product("test", 10.0);
         productDao.create(product);
         assertTrue("Creation of test product failed", 1 == productDao.list().size());
         return product;

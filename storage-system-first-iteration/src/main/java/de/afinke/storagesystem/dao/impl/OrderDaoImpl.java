@@ -1,6 +1,5 @@
 package de.afinke.storagesystem.dao.impl;
 
-import de.afinke.storagesystem.dao.HibernateDao;
 import de.afinke.storagesystem.dao.OrderDao;
 import de.afinke.storagesystem.domain.Order;
 import org.hibernate.Criteria;

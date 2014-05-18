@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface OrderService {
 
-    boolean createOrder(Order order);
+    void createOrder(Order order);
 
     Order readOrder(Long id);
 
@@ -16,5 +16,9 @@ public interface OrderService {
     void deleteOrder(Order order);
 
     List<Order> listOrders();
+
+    List<Order> listOrdersForPerson(Person person);
+
+    double calculateValueOfOrder(Order order);
 
 }

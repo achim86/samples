@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 @ManagedBean
@@ -26,7 +24,7 @@ public class IndexBean {
         personService.createPerson(new Person("Max Mustermann"));
         personService.createPerson(new Person("Erika Mustermann"));
 
-        productService.createProduct(new Product("Gummy Bears", 2.50, 10));
-        productService.createProduct(new Product("Chocolate", 1.00, 5));
+        productService.createProduct(new Product("Gummy Bears", 2.50));
+        productService.createProduct(new Product("Chocolate", 1.00));
     }
 }

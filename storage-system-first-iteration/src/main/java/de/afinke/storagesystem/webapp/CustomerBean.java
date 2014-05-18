@@ -1,7 +1,9 @@
 package de.afinke.storagesystem.webapp;
 
+import de.afinke.storagesystem.domain.Order;
 import de.afinke.storagesystem.domain.Person;
 import de.afinke.storagesystem.domain.Product;
+import de.afinke.storagesystem.service.OrderService;
 import de.afinke.storagesystem.service.PersonService;
 import de.afinke.storagesystem.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class CustomerBean {
     private PersonService personService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private OrderService orderService;
     private Person selectedCustomer;
     private String selectedCustomerId;
     private boolean isCustomerSelected;
@@ -79,5 +83,22 @@ public class CustomerBean {
             totalAmount += product.getPrice();
         }
         return totalAmount;
+    }
+
+    public void placeOrder() {
+        orderService.createOrder(new Order(shoppingCart, selectedCustomer));
+        resetShoppingCart();
+    }
+
+    public double calculateValueForOrder(Order order) {
+        return orderService.calculateValueOfOrder(order);
+    }
+
+    public List<Order> getOrdersForSelectedCustomer() {
+        return orderService.listOrdersForPerson(selectedCustomer);
+    }
+
+    public void resetShoppingCart() {
+        shoppingCart = new ArrayList<Product>();
     }
 }
