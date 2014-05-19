@@ -12,6 +12,7 @@
 
     <properties>
         <cxf.version>2.7.10</cxf.version>
+        <derby.version>10.10.2.0</derby.version>
         <java.version>1.7</java.version>
         <jsf.version>2.2.6</jsf.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,12 +24,12 @@
     <modules>
         <module>common</module>
         <module>order-service</module>
-        <!--
         <module>person-service</module>
         <module>product-service</module>
+        <!--
         <module>app</module>
-        <module>pre-configured-tomcat</module>
         -->
+        <module>pre-configured-tomcat</module>
     </modules>
 
     <dependencyManagement>
@@ -42,7 +43,7 @@
             <dependency>
                 <groupId>org.apache.derby</groupId>
                 <artifactId>derby</artifactId>
-                <version>10.10.2.0</version>
+                <version>${derby.version}</version>
             </dependency>
 
             <!-- Spring -->

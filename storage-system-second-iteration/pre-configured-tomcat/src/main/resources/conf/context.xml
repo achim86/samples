@@ -5,6 +5,7 @@
     <Resource driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
               name="jdbc/storage_system_ds" type="javax.sql.DataSource"
               url="jdbc:derby:storagesystem;create=true"
+              maxActive="100" maxIdle="30" maxWait="10000"
               username="user" password="secret"
             />
 </Context>

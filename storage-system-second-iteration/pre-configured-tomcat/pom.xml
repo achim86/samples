@@ -20,6 +20,29 @@
             <version>${tomcat.version}</version>
             <type>zip</type>
         </dependency>
+        <!-- Database Driver -->
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.afinke</groupId>
+            <artifactId>order-service</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>de.afinke</groupId>
+            <artifactId>person-service</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>de.afinke</groupId>
+            <artifactId>product-service</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -58,6 +81,18 @@
                                 <copy todir="${project.build.directory}/apache-tomcat-${tomcat.version}/conf">
                                     <fileset dir="src/main/resources/conf"/>
                                 </copy>
+
+                                <echo message="Copying database driver."/>
+                                <copy file="${project.build.directory}/repo/derby-${derby.version}.jar"
+                                      tofile="${project.build.directory}/apache-tomcat-${tomcat.version}/lib/derby-${derby.version}.jar"/>
+
+                                <echo message="Copying war files."/>
+                                <copy file="${project.build.directory}/repo/order-service-${project.version}.war"
+                                      tofile="${project.build.directory}/apache-tomcat-${tomcat.version}/webapps/order-service.war"/>
+                                <copy file="${project.build.directory}/repo/person-service-${project.version}.war"
+                                      tofile="${project.build.directory}/apache-tomcat-${tomcat.version}/webapps/person-service.war"/>
+                                <copy file="${project.build.directory}/repo/product-service-${project.version}.war"
+                                      tofile="${project.build.directory}/apache-tomcat-${tomcat.version}/webapps/product-service.war"/>
                             </target>
                         </configuration>
                     </execution>

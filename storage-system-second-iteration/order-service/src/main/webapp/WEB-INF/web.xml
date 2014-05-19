@@ -6,7 +6,6 @@
 
     <display-name>Order Service</display-name>
 
-    <!-- Add Support for Spring -->
     <listener>
         <listener-class>
             org.springframework.web.context.ContextLoaderListener
@@ -17,6 +16,7 @@
             org.springframework.web.context.request.RequestContextListener
         </listener-class>
     </listener>
+
     <servlet>
         <description>Apache CXF Endpoint :: Order Service</description>
         <display-name>cxf</display-name>
