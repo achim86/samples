@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+           http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <context:annotation-config/>
+
+    <context:component-scan base-package="de.afinke.orderingsystem.webapp"/>
+
+    <tx:annotation-driven/>
+
+    <jaxws:client id="orderService"
+                  serviceClass="de.afinke.orderingsystem.service.OrderService"
+                  address="http://localhost:8080/order-service/OrderServiceProvider"/>
+
+    <jaxws:client id="personService"
+                  serviceClass="de.afinke.orderingsystem.service.PersonService"
+                  address="http://localhost:8080/person-service/PersonServiceProvider"/>
+
+    <jaxws:client id="productService"
+                  serviceClass="de.afinke.orderingsystem.service.ProductService"
+                  address="http://localhost:8080/product-service/ProductServiceProvider"/>
+
+</beans>

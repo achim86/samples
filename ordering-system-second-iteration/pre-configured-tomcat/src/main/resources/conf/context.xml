@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+    <Resource driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
+              name="jdbc/ordering_system_ds" type="javax.sql.DataSource"
+              url="jdbc:derby:orderingsystem;create=true"
+              maxActive="100" maxIdle="30" maxWait="10000"
+              username="user" password="secret"
+            />
+</Context>
