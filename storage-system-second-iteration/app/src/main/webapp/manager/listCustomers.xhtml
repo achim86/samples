@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Customer List</title>
+</h:head>
+
+<h:body>
+    <h:form id="form">
+        <p:tabMenu activeIndex="2">
+            <p:menuitem value="Overview" url="/index.jsf"/>
+            <p:menuitem value="Create Customer" url="/manager/createCustomer.jsf"/>
+            <p:menuitem value="List Customers" url="/manager/listCustomers.jsf"/>
+            <p:menuitem value="Create Product" url="/manager/createProduct.jsf"/>
+            <p:menuitem value="List Products" url="/manager/listProducts.jsf"/>
+        </p:tabMenu>
+
+        <p:dataTable id="customerTable" value="#{managerBean.customers}" var="customer">
+            <p:column headerText="ID">
+                <h:outputText value="#{customer.id}"/>
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{customer.name}"/>
+            </p:column>
+            <p:column style="width:4%">
+                <p:commandButton id="editButton" icon="ui-icon-search" title="Edit" process="@this"
+                                 oncomplete="PF('customerDialog').show()" update=":form:display">
+                    <f:setPropertyActionListener value="#{customer}" target="#{managerBean.selectedCustomer}"/>
+                </p:commandButton>
+            </p:column>
+            <p:column style="width:4%">
+                <p:commandButton id="deleteButton" actionListener="#{managerBean.deleteCustomer(customer)}"
+                                 update="customerTable" icon="ui-icon-close" title="Delete" process="@this"/>
+            </p:column>
+        </p:dataTable>
+
+        <p:dialog header="Customer Details" widgetVar="customerDialog" resizable="false" id="customerDlg" modal="true">
+            <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
+                <h:outputText value="ID:"/>
+                <h:outputText value="#{managerBean.selectedCustomer.id}" style="font-weight:bold"/>
+                <h:outputText value="Name:"/>
+                <h:inputText value="#{managerBean.selectedCustomer.name}" style="font-weight:bold"/>
+                <f:facet name="footer">
+                    <p:commandButton id="updateButton" value="Update" update=":form:customerTable"
+                                     actionListener="#{managerBean.updateCustomer()}"
+                                     oncomplete="PF('customerDialog').hide()"/>
+                    <p:commandButton id="canelButton" value="Cancel" onclick="PF('customerDialog').hide()"/>
+                </f:facet>
+            </h:panelGrid>
+        </p:dialog>
+
+    </h:form>
+</h:body>
+
+</html>

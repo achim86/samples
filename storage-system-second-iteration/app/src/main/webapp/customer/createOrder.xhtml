@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Create Order</title>
+</h:head>
+
+<h:body>
+    <h:form id="form">
+        <p:tabMenu activeIndex="1">
+            <p:menuitem value="Overview" url="/index.jsf"/>
+            <p:menuitem value="Create Order" url="/customer/createOrder.jsf"
+                        rendered="#{customerBean.customerSelected}"/>
+            <p:menuitem value="List Orders" url="/customer/listOrders.jsf"
+                        rendered="#{customerBean.customerSelected}"/>
+        </p:tabMenu>
+
+        <p:panelGrid id="productPanel" columns="2">
+            <p:row>
+                <p:dataTable id="productTable" value="#{customerBean.products}" var="product">
+                    <p:column headerText="Name">
+                        <h:outputText value="#{product.name}"/>
+                    </p:column>
+                    <p:column headerText="Price">
+                        <h:outputText value="#{product.price}"/>
+                    </p:column>
+                    <p:column style="width:4%">
+                        <p:commandButton id="addButton" actionListener="#{customerBean.addProduct(product)}"
+                                         update="productTable" icon="ui-icon-plus" title="Add"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        <p:outputLabel value="Shopping Cart"/>
+                        <p:dataTable id="shoppingCartTable" value="#{customerBean.shoppingCart}" var="product">
+                            <p:column headerText="Name">
+                                <h:outputText value="#{product.name}"/>
+                            </p:column>
+                            <p:column headerText="Price">
+                                <h:outputText value="#{product.price}"/>
+                            </p:column>
+                            <f:facet name="footer">
+                                <h:outputLabel value="Total Amount: "/>
+                                <h:outputText value="#{customerBean.calculatePrice()}"/>
+                                <p:commandButton value="Place Order" actionListener="#{customerBean.placeOrder()}"
+                                                 update="shoppingCartTable"/>
+                                <p:commandButton value="Reset" actionListener="#{customerBean.resetShoppingCart()}"
+                                                 update="shoppingCartTable"/>
+                            </f:facet>
+                        </p:dataTable>
+                    </f:facet>
+                </p:dataTable>
+            </p:row>
+        </p:panelGrid>
+
+    </h:form>
+</h:body>
+
+</html>

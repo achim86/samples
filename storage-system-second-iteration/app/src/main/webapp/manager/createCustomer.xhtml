@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Create Customer</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <p:tabMenu activeIndex="1">
+            <p:menuitem value="Overview" url="/index.jsf"/>
+            <p:menuitem value="Create Customer" url="/manager/createCustomer.jsf"/>
+            <p:menuitem value="List Customers" url="/manager/listCustomers.jsf"/>
+            <p:menuitem value="Create Product" url="/manager/createProduct.jsf"/>
+            <p:menuitem value="List Products" url="/manager/listProducts.jsf"/>
+        </p:tabMenu>
+
+        <p:panel id="customerPanel" header="New Customer" style="margin-bottom:10px;">
+            <h:panelGrid columns="2">
+                <h:outputLabel for="name" value="Name: "/>
+                <p:inputText id="name" value="#{managerBean.customer.name}"/>
+            </h:panelGrid>
+        </p:panel>
+
+        <p:commandButton value="Create" update="customerPanel"
+                         actionListener="#{managerBean.createCustomer()}" styleClass="ui-priority-primary"/>
+    </h:form>
+</h:body>
+
+</html>

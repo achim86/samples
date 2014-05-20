@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>Order List</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <p:tabMenu activeIndex="2">
+            <p:menuitem value="Overview" url="/index.jsf"/>
+            <p:menuitem value="Create Order" url="/customer/createOrder.jsf"
+                        rendered="#{customerBean.customerSelected}"/>
+            <p:menuitem value="List Orders" url="/customer/listOrders.jsf"
+                        rendered="#{customerBean.customerSelected}"/>
+        </p:tabMenu>
+        <ui:repeat value="#{customerBean.ordersForSelectedCustomer}" var="order" varStatus="status">
+            <h:outputLabel for="orderno" value="Order No.: " style="font-weight:bold"/>
+            <h:outputText id="orderno" value="#{status.index + 1}"/>
+            <p:spacer width="25"/>
+            <h:outputLabel for="value" value="Amount: " style="font-weight:bold"/>
+            <h:outputText id="value" value="#{customerBean.calculateValueForOrder(order)}"/>
+            <p:dataList id="orderDetailsTable" value="#{order.products}" var="product">
+                <h:outputText value="#{product.name}"/>
+            </p:dataList>
+        </ui:repeat>
+    </h:form>
+</h:body>
+
+</html>
