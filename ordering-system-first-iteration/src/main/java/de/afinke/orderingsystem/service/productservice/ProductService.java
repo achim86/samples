@@ -1,4 +1,4 @@
-package de.afinke.orderingsystem.service;
+package de.afinke.orderingsystem.service.productservice;
 
 import de.afinke.orderingsystem.domain.Product;
 

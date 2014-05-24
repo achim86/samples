@@ -1,4 +1,4 @@
-package de.afinke.orderingsystem.service.dao;
+package de.afinke.orderingsystem.dao.product;
 
 import de.afinke.orderingsystem.domain.Product;
 

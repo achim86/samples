@@ -1,8 +1,7 @@
-package de.afinke.orderingsystem.service.impl;
+package de.afinke.orderingsystem.service.productservice;
 
-import de.afinke.orderingsystem.dao.ProductDao;
+import de.afinke.orderingsystem.dao.product.ProductDao;
 import de.afinke.orderingsystem.domain.Product;
-import de.afinke.orderingsystem.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

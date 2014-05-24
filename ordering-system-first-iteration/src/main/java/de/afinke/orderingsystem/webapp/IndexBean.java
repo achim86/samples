@@ -2,8 +2,8 @@ package de.afinke.orderingsystem.webapp;
 
 import de.afinke.orderingsystem.domain.Person;
 import de.afinke.orderingsystem.domain.Product;
-import de.afinke.orderingsystem.service.PersonService;
-import de.afinke.orderingsystem.service.ProductService;
+import de.afinke.orderingsystem.service.personservice.PersonService;
+import de.afinke.orderingsystem.service.productservice.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

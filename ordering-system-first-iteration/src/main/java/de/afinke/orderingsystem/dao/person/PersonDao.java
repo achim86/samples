@@ -1,4 +1,4 @@
-package de.afinke.orderingsystem.service.dao;
+package de.afinke.orderingsystem.dao.person;
 
 import de.afinke.orderingsystem.domain.Person;
 

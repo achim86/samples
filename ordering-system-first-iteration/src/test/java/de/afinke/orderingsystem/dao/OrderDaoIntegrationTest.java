@@ -1,9 +1,12 @@
 package de.afinke.orderingsystem.dao;
 
 import de.afinke.orderingsystem.IntegrationTest;
+import de.afinke.orderingsystem.dao.product.ProductDao;
+import de.afinke.orderingsystem.dao.person.PersonDao;
 import de.afinke.orderingsystem.domain.Order;
 import de.afinke.orderingsystem.domain.Person;
 import de.afinke.orderingsystem.domain.Product;
+import de.afinke.orderingsystem.dao.order.OrderDao;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -70,7 +73,7 @@ public class OrderDaoIntegrationTest extends IntegrationTest {
 
         Order order = new Order(products, person);
         orderDao.create(order);
-        assertTrue("Creation of test order failed", 1 == orderDao.list().size());
+        assertTrue("Creation of test product failed", 1 == orderDao.list().size());
 
         return order;
     }

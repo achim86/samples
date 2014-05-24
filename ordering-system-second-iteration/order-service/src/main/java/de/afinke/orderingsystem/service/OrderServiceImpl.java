@@ -1,9 +1,9 @@
 package de.afinke.orderingsystem.service;
 
-import de.afinke.orderingsystem.service.dao.OrderDao;
 import de.afinke.orderingsystem.domain.Order;
 import de.afinke.orderingsystem.domain.Person;
 import de.afinke.orderingsystem.domain.Product;
+import de.afinke.orderingsystem.service.dao.OrderDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,10 +1,10 @@
 package de.afinke.orderingsystem.service;
 
-import de.afinke.orderingsystem.dao.OrderDao;
+import de.afinke.orderingsystem.dao.order.OrderDao;
 import de.afinke.orderingsystem.domain.Order;
 import de.afinke.orderingsystem.domain.Person;
 import de.afinke.orderingsystem.domain.Product;
-import de.afinke.orderingsystem.service.impl.OrderServiceImpl;
+import de.afinke.orderingsystem.service.orderservice.OrderServiceImpl;
 import org.junit.Test;
 
 import java.util.ArrayList;

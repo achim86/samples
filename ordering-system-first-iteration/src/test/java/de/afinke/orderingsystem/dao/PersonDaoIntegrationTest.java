@@ -1,6 +1,7 @@
 package de.afinke.orderingsystem.dao;
 
 import de.afinke.orderingsystem.IntegrationTest;
+import de.afinke.orderingsystem.dao.person.PersonDao;
 import de.afinke.orderingsystem.domain.Person;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

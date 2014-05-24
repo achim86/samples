@@ -1,4 +1,4 @@
-package de.afinke.orderingsystem.service;
+package de.afinke.orderingsystem.service.orderservice;
 
 import de.afinke.orderingsystem.domain.Order;
 import de.afinke.orderingsystem.domain.Person;
