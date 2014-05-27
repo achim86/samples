@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="greeter_app" version="2.5">
 
-    <display-name>Greeter App</display-name>
+    <display-name>Ordering System App</display-name>
 
     <!-- Add Support for Spring -->
     <listener>

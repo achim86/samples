@@ -11,12 +11,14 @@
            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
            http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 
-    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <!-- Publishes personServiceBean as SOAP WebService. -->
+    <bean id="personServiceBean" class="de.afinke.orderingsystem.service.PersonServiceImpl"/>
+    <jaxws:endpoint id="personService" address="/PersonServiceProvider" implementor="#personServiceBean"/>
 
-    <context:annotation-config/>
-
+    <!-- Tells Spring where to find components. Spring will register all components to its container automatically. -->
     <context:component-scan base-package="de.afinke.orderingsystem.service"/>
 
+    <!-- Database related configuration. -->
     <tx:annotation-driven/>
 
     <jee:jndi-lookup id="dataSource"
@@ -34,9 +36,6 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.DerbyTenSevenDialect</prop>
-                <prop key="hibernate.max_fetch_depth">3</prop>
-                <prop key="hibernate.jdbc.fetch_size">50</prop>
-                <prop key="hibernate.jdbc.batch_size">10</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
@@ -49,7 +48,4 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="personServiceBean" class="de.afinke.orderingsystem.service.PersonServiceImpl"/>
-
-    <jaxws:endpoint id="personService" address="/PersonServiceProvider" implementor="#personServiceBean"/>
 </beans>
