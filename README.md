@@ -11,8 +11,12 @@ Check [Maven Getting Started Guide](http://maven.apache.org/guides/getting-start
 ## Ordering System First Iteration
 
 ### Installation
-Navigate to project root foler and execute mvn clean install.
+Navigate to project foler and execute 
+    mvn clean install
 
 ### Execution
-Run packaged Tomcat in target folder via java -jar standalone-tomcat.jar or start Tomcat via executing mvn tomcat7:run.
-Tomcat is accessible under http://localhost:8080/all-in-one.
+Run packaged Tomcat in target folder via 
+    java -jar standalone-tomcat.jar 
+or start Tomcat via Maven executing 
+    mvn tomcat7:run
+The started Tomcat is accessible under http://localhost:8080/all-in-one.
