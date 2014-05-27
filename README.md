@@ -11,8 +11,7 @@ Check [Maven Getting Started Guide](http://maven.apache.org/guides/getting-start
 ## Ordering System First Iteration
 
 ### Installation
-Navigate to project foler and execute 
-    mvn clean install
+Navigate to project foler and execute <code>mvn clean install</code>.
 
 ### Execution
 Run packaged Tomcat in target folder via <code>java -jar standalone-tomcat.jar</code> or start Tomcat via Maven executing <code>mvn tomcat7:run</code>.
