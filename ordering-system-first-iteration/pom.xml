@@ -164,7 +164,7 @@
                         <configuration>
                             <enableNaming>false</enableNaming>
                             <finalName>standalone-tomcat.jar</finalName>
-                            <path>/${artifactId}</path>
+                            <path>/${project.artifactId}</path>
                         </configuration>
                     </execution>
                 </executions>
