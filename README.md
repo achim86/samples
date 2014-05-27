@@ -15,8 +15,5 @@ Navigate to project foler and execute
     mvn clean install
 
 ### Execution
-Run packaged Tomcat in target folder via 
-    java -jar standalone-tomcat.jar 
-or start Tomcat via Maven executing 
-    mvn tomcat7:run
+Run packaged Tomcat in target folder via <code>java -jar standalone-tomcat.jar</code> or start Tomcat via Maven executing <code>mvn tomcat7:run</code>.
 The started Tomcat is accessible under http://localhost:8080/all-in-one.
