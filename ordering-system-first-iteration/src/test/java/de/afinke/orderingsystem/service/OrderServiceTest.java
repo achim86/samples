@@ -14,6 +14,9 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+/**
+ * Tests business logic of order service using mocked OrderDao.
+ */
 public class OrderServiceTest {
 
     private OrderServiceImpl orderService = new OrderServiceImpl();
@@ -27,10 +30,13 @@ public class OrderServiceTest {
 
     @Test
     public void testListOrdersForPerson() {
+        /* Check http://docs.mockito.googlecode.com/hg/latest/org/mockito/Mockito.html
+        *  for more Mockito recipes and great explanation of the framework. */
         OrderDao orderDao = mock(OrderDao.class);
         when(orderDao.list()).thenReturn(createTestOrders());
         orderService.setOrderDao(orderDao);
-        List<Order> orders = orderService.listOrdersForPerson(new Person("TestPersonOne"));
+        Person testPerson = new Person("TestPersonOne");
+        List<Order> orders = orderService.listOrdersForPerson(testPerson);
         assertEquals(1, orders.size());
     }
 

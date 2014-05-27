@@ -8,10 +8,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.jdbc.JdbcTestUtils;
 
+/**
+ * Basic IntegrationTest loading Spring application context and cleaning up the database before test starts.
+ */
 @ContextConfiguration("file:src/main/webapp/WEB-INF/applicationContext.xml")
 public abstract class IntegrationTest extends AbstractTransactionalJUnit4SpringContextTests {
 
-    private final String deleteScript = "src/test/resources/sql/cleanup.sql";
+    private final String cleanUpDatabaseScript = "src/test/resources/sql/cleanup.sql";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -19,7 +22,7 @@ public abstract class IntegrationTest extends AbstractTransactionalJUnit4SpringC
     @Before
     public void deleteAllDomainEntities() {
         JdbcTestUtils.executeSqlScript(jdbcTemplate,
-                new FileSystemResource(deleteScript), false);
+                new FileSystemResource(cleanUpDatabaseScript), false);
     }
 
 }
